@@ -1,0 +1,72 @@
+#headerAccueil
+{
+	border-bottom: 5px #3726a6 solid;
+	color: #3726a6;
+}
+
+section
+{
+	margin-top: 50px;
+	margin-bottom: 200px;
+}
+
+h1
+{
+	margin: auto;
+}
+
+legend, label
+{
+	margin-bottom: 25px;
+	font-size: 20px;
+}
+
+.form-group
+{
+	margin-bottom: 25px;
+}
+
+.element
+{
+	border-bottom: 1px #3726a6 solid;
+	margin-bottom: 25px;
+	padding-bottom: 25px;
+}
+
+textarea
+{
+	height: 200px !important;
+}
+
+.btn
+{
+	font-size: 20px;
+	border: 1px #3726a6 solid !important;
+	margin-right: 10px;
+	border-radius: 0%;	
+	background-color: white;
+	color: #3726a6;
+}
+
+.btn:hover
+{
+	color: #fdd400;
+}
+
+/*.inputRadio
+{
+	display: none;
+}*/
+
+footer
+{
+	background-color: #3726a6;
+	color: white;
+	text-align: center;
+}
+
+/*input
+{
+	margin-right: 15px;
+}*/
+

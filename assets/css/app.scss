@@ -1,0 +1,76 @@
+// assets/css/global.scss
+
+// customize some Bootstrap variables
+$primary: darken(#428bca, 20%);
+
+// the ~ allows you to reference things in node_modules
+@import "~bootstrap/scss/bootstrap";
+
+#headerAccueil
+{
+	border-bottom: 5px #8F8F8F solid;
+	color: #8F8F8F;
+	padding-bottom: 10px;
+	text-align: center;
+}
+
+section
+{
+	margin-top: 50px;
+	margin-bottom: 200px;
+}
+
+h1
+{
+	margin: auto;
+}
+
+legend, label
+{
+	margin-bottom: 25px;
+	font-size: 20px;
+}
+
+.form-group
+{
+	margin-bottom: 25px;
+}
+
+.element
+{
+	border-bottom: 1px #8F8F8F solid;
+	margin-bottom: 25px;
+	padding-bottom: 25px;
+}
+
+textarea
+{
+	height: 200px !important;
+}
+
+.btn
+{
+	font-size: 20px;
+	border: 1px #8F8F8F solid !important;
+	margin-right: 10px;
+	border-radius: 0%;	
+	background-color: white;
+	color: #8F8F8F;
+}
+
+.btn:hover
+{
+	color: #fdd400;
+}
+
+/*.inputRadio, .form-check-input
+{
+	margin-right: 10px;
+}*/
+
+footer
+{
+	background-color: #8F8F8F;
+	color: white;
+	text-align: center;
+}
