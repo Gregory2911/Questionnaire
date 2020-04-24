@@ -5,7 +5,7 @@
 {% block body %}
     <section class="container">
 
-        <p>{{ questionnaire.prenomDestinataire ~ " " ~ questionnaire.nomDestinataire }}, vous êtes invités à remplir ce questionnaire car vous avez suivi une formation au sein de notre organisme.</p>
+        <p>{{ questionnaire.presentation | raw }}</p>
 
 	    <form action="{{ path('submitQuestionnaire', {'id':questionnaire.cle}) }}" method="post" class="col-lg-12 needs-validation" name="formulaire" novalidate>
         
@@ -18,10 +18,12 @@
                 {% set id = 'id|' ~ question.id ~ '|vrai' %}
                 {% set require = "required" %}
                 {% set asterisque = "*" %}
+                {% set classChoixMultiple = "choixMultiple" %}
             {% else %}
                 {% set id = 'id|' ~ question.id ~ '|vrai' %}
                 {% set require = "" %}
                 {% set asterisque = "" %}
+                {% set classChoixMultiple = "" %}
             {% endif %}
 
             {% if (question.aide != "") %}
@@ -74,15 +76,15 @@
 
             {# choix multiple #}
             {% if (question.typeQuestion == 4) %}
-                <div class="form-group element">
+                <div class="form-group element {{ classChoixMultiple }}">
                     <legend>{{ nb ~ ". " ~ question.libelle | e ~ asterisque }}</legend>                    
                     {% for value in question.choix %}                                                    
                         <div class="custom-control custom-checkbox mb-3 custom-control-inline">
-                            <input type="checkbox" class="custom-control-input" id="{{'customControlValidation' ~ i}}"  name="{{ id }}[]" {{ require }}>
+                            <input type="checkbox" class="custom-control-input" id="{{'customControlValidation' ~ i}}"  name="{{ id }}[]">
                             <label class="custom-control-label" for="{{'customControlValidation' ~ i}}">{{ value.LibelleChoix | e }}</label>
-                            {% if loop.last == true %}                                    
+                            {% if loop.last == true %}
                                 <div class="invalid-feedback">Veuillez cocher une case.</div>
-                            {% endif %}  
+                            {% endif %}
                         </div>                    
                         {% set i = i+1 %}
                     {% endfor %}                    

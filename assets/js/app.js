@@ -18,6 +18,8 @@ import $ from 'jquery';
 
 // console.log('Hello Webpack Encore! Edit me in assets/js/app.js');
 
+
+
 document.addEventListener("DOMContentLoaded", function () {
   "use strict";
  
@@ -25,20 +27,40 @@ document.addEventListener("DOMContentLoaded", function () {
   
   button.addEventListener("click", function (event) {
     var forms = document.getElementsByClassName('needs-validation');
-      // Loop over them and prevent submission
-      var validation = Array.prototype.filter.call(forms, function(form) {        
-          if (form.checkValidity() === false) {
-            event.preventDefault();
-            event.stopPropagation();
-            form.classList.add('was-validated');        
-          }
-          else
-          {
-            if (confirm("Confirmez-vous l'envoi de vos réponses ?"))
-            {      
-              formulaire.submit();      
-            };      
-          }          
-      });    
+
+    $('.choixMultiple').each(function(){
+      var ok = false;
+      $(this).find('input').each(function(){
+        if($(this).is(':checked')){
+          ok = true;            
+        }
+      })
+
+      $(this).find('input').each(function(){        
+        if(ok === false){          
+          $(this).attr("required", true);
+        }
+        else{
+          $(this).attr("required", false);
+        }        
+      })
+
+    });
+
+    //Loop over them and prevent submission
+    var validation = Array.prototype.filter.call(forms, function(form) {        
+        if (form.checkValidity() === false) {
+          event.preventDefault();
+          event.stopPropagation();
+          form.classList.add('was-validated');        
+        }        
+        else
+        {
+          if (confirm("Confirmez-vous l'envoi de vos réponses ?"))
+          {      
+            formulaire.submit();      
+          };      
+        }          
+    });    
   });
 });

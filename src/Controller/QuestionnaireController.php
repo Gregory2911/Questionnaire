@@ -29,7 +29,7 @@ class QuestionnaireController extends AbstractController
             {
                 $content = json_decode($json, true); 
                 
-                $infoQuestionnaire = extract($content['Questionnaire']);//crée la variable $Question               
+                $infoQuestionnaire = extract($content['Questionnaire']);//crée la variable $Question $Nom $Presentation     
 
                 $questionnaire = new Questionnaire();
 
@@ -38,6 +38,7 @@ class QuestionnaireController extends AbstractController
                               ->setType($content['Type'])
                               ->setRealise($content['Realise'])
                               ->setNom($Nom)
+                              ->setPresentation($Presentation)
                               ->setNomDestinataire($content['Nom'])
                               ->setPrenomDestinataire($content['Prenom'])
                               ->setSociete($content['NomSociete']);;
@@ -66,11 +67,7 @@ class QuestionnaireController extends AbstractController
                     $i++;
                 }
 
-                $questionnaire->setField($tabQuestion);                
-
-                // dump($tabQuestion);
-
-                // die();
+                $questionnaire->setField($tabQuestion);                            
 
                 if($questionnaire->getRealise() == false)
                 {

@@ -44,6 +44,11 @@ class Questionnaire
     /**
      * @ORM\Column(type="string", length=255)
      */
+    private $presentation;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private $nomDestinataire;
 
     /**
@@ -60,6 +65,8 @@ class Questionnaire
      * @ORM\Column(type="array")
      */
     private $field = [];
+
+
 
     public function getId(): ?int
     {
@@ -122,6 +129,18 @@ class Questionnaire
     public function setNom(string $nom): self
     {
         $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getPresentation(): ?string
+    {
+        return $this->presentation;
+    }
+
+    public function setPresentation(string $presentation): self
+    {
+        $this->presentation = $presentation;
 
         return $this;
     }
