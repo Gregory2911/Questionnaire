@@ -22,14 +22,14 @@ class QuestionnaireController extends AbstractController
     public function index($id = null)
     {
         if(isset($id))
-        {
+        {            
             $json = file_get_contents('http://54.36.74.97/questionnaire/' . $id);
-
+           
             if($json !== false)
             {
                 $content = json_decode($json, true); 
                 
-                $infoQuestionnaire = extract($content['Questionnaire']);//crée la variable $Question $Nom $Presentation     
+                $infoQuestionnaire = extract($content['Questionnaire']);//crée les variables $Question $Nom $Presentation     
 
                 $questionnaire = new Questionnaire();
 
