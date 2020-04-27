@@ -17,7 +17,7 @@ use App\Entity\Reponse;
 class QuestionnaireController extends AbstractController
 {
     /**
-     * @Route("/questionnaire/{id}", name="questionnaire")
+     * @Route("/{id}", name="questionnaire")
      */
     public function index($id = null)
     {
