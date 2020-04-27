@@ -56,11 +56,18 @@ document.addEventListener("DOMContentLoaded", function () {
         }        
         else
         {
-          if (confirm("Confirmez-vous l'envoi de vos réponses ?"))
-          {      
-            formulaire.submit();      
-          };      
+          // if (confirm("Confirmez-vous l'envoi de vos réponses ?"))
+          // {      
+          //   formulaire.submit();      
+          // };
+          $('#modalConfirmation').modal('show');      
         }          
     });    
   });
+
+  $("#btnConfirmation").click(function(){
+    alert("cool");
+    //formulaire.submit();
+    $('#modalConfirmation').modal('hide');      
+  })
 });

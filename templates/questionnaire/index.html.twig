@@ -143,13 +143,29 @@
         {% endfor %}
             
             {#<button class="btn btn-primary float-right" type="submit">Envoyer</button>#}
-            <button type="button" class="btn btn-primary float-right validation">Envoyer</button>
+            <button id="btnSubmit" type="button" class="btn btn-primary float-right validation">ENVOYER</button>
 
 	    </form>
  
-	    <p>Les champs marqués d'un astérisque (*) sont obligatoires<p>
+	    <p id="infoAsterisque">Les champs marqués d'un astérisque (*) sont obligatoires<p>
 
     </section>
+
+    {#popup de confirmation#}
+    <!--Popup de connexion-->
+  	<div class="modal" id="modalConfirmation">
+  		<div class="modal-dialog">
+    		<div class="modal-content">
+      			<div class="modal-header">							        
+        			<h4 class="modal-title">Confirmez-vous l'envoi de vos réponses ?</h4>        			
+      			</div>
+     			<div class="modal-body">        			       				
+                    <button id="btnAnnulation" type="button" class="btn btn-primary close" data-dismiss="modal">ANNULER</button>				
+                    <button class="btn btn-primary inscription" id="btnConfirmation">ENVOYER</button>       				
+	      		</div>
+	    	</div>
+	  	</div>
+	</div>
 
     <footer>Vous recevez ce questionnaire car vous avez participé à une formation avec {{ questionnaire.societe }} qui utilise <br/> FORMDEV pour ses questionnaires. Vos réponses sont anonymes.</footer>
 

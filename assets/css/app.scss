@@ -74,3 +74,60 @@ footer
 	color: white;
 	text-align: center;
 }
+
+.modal-header, .modal-body
+{
+	background-color: #789696;
+}
+
+.modal-title
+{
+	color: white;
+}
+
+#btnSubmit
+{
+	margin-top: 30px;
+}
+
+#btnSubmit, #btnConfirmation
+{
+	background-color: #39B54A;
+	color: white;
+	font-size: 13px;
+	font-weight: bold;
+	width: 120px;
+	height: 40px;
+	border: white 1px solid !important;
+}
+
+#btnSubmit:hover, #btnConfirmation:hover
+{
+	opacity: 70%;
+	font-size: 12px;
+	border: #D8DCCE 1px solid !important;
+}
+
+#btnAnnulation
+{
+	background-color: #789696;
+	color: white;
+	font-size: 13px;
+	font-weight: bold;
+	width: 120px;
+	height: 40px;
+	border: white 1px solid !important;
+	opacity: 100%;
+}
+
+#btnAnnulation:hover
+{
+	opacity: 70%;
+	font-size: 12px;
+	border: #D8DCCE 1px solid !important;
+}
+
+#infoAsterisque
+{
+	color: #E2574C;
+}
