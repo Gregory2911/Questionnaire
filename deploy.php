@@ -22,4 +22,4 @@ set('writable_use_sudo', false);
 
 /* A chaque déploiement, l'ancienne version est archivée. 
  * Cette variable permet d'indiquer le nombre maximum de version que l'on souhaite conserver. */
-set('keep_releases', 5);php app/console cache:clear --env=prod
+set('keep_releases', 5);
