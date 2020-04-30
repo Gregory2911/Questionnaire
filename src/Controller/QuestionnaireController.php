@@ -21,7 +21,7 @@ class QuestionnaireController extends AbstractController
      */
     public function index($id = null)
     {
-        if(isset($id))
+        if(isset($id) || $id !== null)
         {            
             $json = file_get_contents('http://54.36.74.97/questionnaire/' . $id);
            
