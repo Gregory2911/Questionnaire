@@ -21,10 +21,10 @@ class QuestionnaireController extends AbstractController
      */
     public function index($id = null)
     {
-        if(isset($id) || $id !== null)
+        if(isset($id))
         {            
             $Serveur_Formdev = '54.36.74.97';
-            $json = file_get_contents('http://'.$Serveur_Formdev.'/questionnaire/' . $id);
+            $json = @file_get_contents('http://'.$Serveur_Formdev.'/questionnaire/' . $id);
                        
             if($json !== false)
             {
