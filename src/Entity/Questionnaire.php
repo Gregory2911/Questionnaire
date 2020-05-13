@@ -62,6 +62,11 @@ class Questionnaire
     private $societe;
 
     /**
+     * @ORM\Column(type="boolean")
+     */
+    private $anonyme;
+
+    /**
      * @ORM\Column(type="array")
      */
     private $field = [];
@@ -85,7 +90,7 @@ class Questionnaire
         return $this;
     }
 
-    public function getok(): ?bool
+    public function getOk(): ?bool
     {
         return $this->ok;
     }
@@ -177,6 +182,18 @@ class Questionnaire
     public function setSociete(string $societe): self
     {
         $this->societe = $societe;
+
+        return $this;
+    }
+
+    public function getAnonyme(): ?bool
+    {
+        return $this->anonyme;
+    }
+
+    public function setAnonyme(bool $anonyme): self
+    {
+        $this->anonyme = $anonyme;
 
         return $this;
     }

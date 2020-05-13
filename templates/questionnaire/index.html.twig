@@ -20,7 +20,7 @@
                 {% set asterisque = "*" %}
                 {% set classChoixMultiple = "choixMultiple" %}
             {% else %}
-                {% set id = 'id|' ~ question.id ~ '|vrai' %}
+                {% set id = 'id|' ~ question.id ~ '|faux' %}
                 {% set require = "" %}
                 {% set asterisque = "" %}
                 {% set classChoixMultiple = "" %}
@@ -142,7 +142,17 @@
 
         {% endfor %}
             
-            {#<button class="btn btn-primary float-right" type="submit">Envoyer</button>#}
+            {# si questionnaire anonyme #}
+            {% if (questionnaire.anonyme == true) %}
+                <div class="form-group element">
+                    <legend>Cochez cette case si vous souhaitez que vos réponses soient traitées de manière anonyme</legend>
+                    <div class="custom-control custom-checkbox mb-3">
+                        <input type="checkbox" class="custom-control-input" id="anonyme"  name="anonyme">
+                        <label class="custom-control-label" for="anonyme"></label>                        
+                    </div>                    
+                </div>
+            {% endif %} 
+
             <button id="btnSubmit" type="button" class="btn btn-primary float-right validation">ENVOYER</button>
 
 	    </form>
@@ -167,7 +177,7 @@
 	  	</div>
 	</div>
 
-    <footer>Vous recevez ce questionnaire car vous avez participé à une formation avec {{ questionnaire.societe }} qui utilise <br/> FORMDEV pour ses questionnaires. Vos réponses sont anonymes.</footer>
+    <footer>Vous recevez ce questionnaire car vous avez participé à une formation avec {{ questionnaire.societe }} qui utilise FORMDEV pour ses questionnaires.</footer>
 
 {% endblock %}
 

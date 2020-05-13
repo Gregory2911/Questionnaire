@@ -30,7 +30,7 @@ class QuestionnaireController extends AbstractController
             {
                 $content = json_decode($json, true); 
                 
-                $infoQuestionnaire = extract($content['Questionnaire']);//crée les variables $Question $Nom $Presentation     
+                $infoQuestionnaire = extract($content['Questionnaire']);//crée les variables $question $nom $presentation $anonyme 
 
                 $questionnaire = new Questionnaire();
 
@@ -42,6 +42,7 @@ class QuestionnaireController extends AbstractController
                               ->setPresentation($Presentation)
                               ->setNomDestinataire($content['Nom'])
                               ->setPrenomDestinataire($content['Prenom'])
+                              ->setAnonyme($Anonyme)
                               ->setSociete($content['NomSociete']);;
 
                 $i = 0;
@@ -103,10 +104,12 @@ class QuestionnaireController extends AbstractController
             $idQuestionnaire = $id;
 
             $request = Request::createFromGlobals();
+
+            $isAnonyme = 0;
             
             $i = 0;
             $tabReponses = array();
-            foreach ($request->request->all() as $key => $value) 
+            foreach ($request->request->all() as $key => $value) //$value est un array
             {
                 $elt = explode("|",$key);
                 
@@ -114,7 +117,11 @@ class QuestionnaireController extends AbstractController
                 {
                     if (!empty($value))
                     {
-                        if ($elt[2] == "vrai" && $value[0] != "")
+                        if($elt[2] == "vrai" && $value[0] == "")
+                        {        
+                            throw new Exception('Vous devez répondre à toutes les questions obligatoires.');                    
+                        }
+                        elseif($value[0] !== "")
                         {                    
                             $j =  0;
                             $tabReponse = array();
@@ -123,7 +130,7 @@ class QuestionnaireController extends AbstractController
                                 $reponse = new Reponse();
                                 $reponse->setReponse($valueQuestion);
                                 $tabReponse[$j] = $reponse;
-                                $j++;    
+                                $j++;
                             }
                             
                             $reponses = new Reponses();
@@ -133,24 +140,24 @@ class QuestionnaireController extends AbstractController
                             $tabReponses[$i] = $reponses;
                             
                             $i++;
-                        }
-                        else
-                        {
-                            throw new Exception('Vous devez répondre à toutes les questions obligatoires.');
-                        }
+                        }                        
                     }
-                }            
+                }
+                elseif($key == 'anonyme')
+                {                    
+                    $isAnonyme = 1;
+                }         
             }
             
             $encoders = [new JsonEncoder()];
             $normalizers = [new ObjectNormalizer()];
 
             $serializer = new Serializer($normalizers, $encoders);
-
-            $json = '{"Reponse":' . $serializer->serialize($tabReponses, 'json') . '}';
-            
+                        
+            $json = '{"isAnonyme":' . $isAnonyme . ',"Reponse":' . $serializer->serialize($tabReponses, 'json') . '}';                                   
+                        
             // dump($json);
-            //     die();
+            // die();
 
             $options = array(
                 'http' => array(
@@ -166,6 +173,9 @@ class QuestionnaireController extends AbstractController
             $result = file_get_contents('http://54.36.74.97/questionnaire/' . $id, false, $context);
             
             $reponseJson = json_decode($result, true);
+
+            // dump($reponseJson);
+            // die();
             
             if($reponseJson['ok'] !== false)
             {

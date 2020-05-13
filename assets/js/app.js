@@ -66,8 +66,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   $("#btnConfirmation").click(function(){
-    alert("cool");
-    //formulaire.submit();
+    formulaire.submit();
     $('#modalConfirmation').modal('hide');      
   })
 });
