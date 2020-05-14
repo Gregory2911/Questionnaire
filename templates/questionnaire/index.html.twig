@@ -30,7 +30,12 @@
                 {% set aide = '<small id="passwordHelpBlock" class="form-text text-muted">' ~ question.aide ~ '</small>' %}            
             {% else %}
                 {% set aide = "" %}            
-            {% endif %}            
+            {% endif %}
+
+            {# bloc texte #}
+            {% if (question.typeQuestion == 8) %}
+                <div class="border border-dark text-center">{{ question.libelle }}</div>
+            {% endif %}
             
             {# texte court #}
             {% if (question.typeQuestion == 1) %}
@@ -138,7 +143,9 @@
                 </div>
             {% endif %}
 
-            {% set nb = nb+1 %}
+            {% if question.typeQuestion != 8 %}
+                {% set nb = nb+1 %}
+            {% endif %}
 
         {% endfor %}
             
