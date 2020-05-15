@@ -6,6 +6,12 @@ $primary: darken(#428bca, 20%);
 // the ~ allows you to reference things in node_modules
 @import "~bootstrap/scss/bootstrap";
 
+html
+{
+	position: relative;
+	min-height: 100%;
+}
+
 #headerAccueil
 {
 	border-bottom: 5px #8F8F8F solid;
@@ -43,6 +49,14 @@ legend, label
 	padding-bottom: 25px;
 }
 
+.blocTexte
+{
+	margin-bottom: 25px;
+	//border: 1px #8F8F8F solid;
+	font-size: 20px;
+	//vertical-align: middle;
+}
+
 textarea
 {
 	height: 200px !important;
@@ -70,6 +84,10 @@ textarea
 
 footer
 {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 30px;
 	background-color: #8F8F8F;
 	color: white;
 	text-align: center;
