@@ -4,7 +4,7 @@
 
 {% block body %}
     <section class="container">
-        <p>toto</p>
+        
         <p>{{ questionnaire.presentation | raw }}</p>
 
 	    <form action="{{ path('submitQuestionnaire', {'id':questionnaire.cle}) }}" method="post" class="col-lg-12 needs-validation" name="formulaire" novalidate>
