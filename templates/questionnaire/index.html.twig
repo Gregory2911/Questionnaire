@@ -67,7 +67,7 @@
                     <legend>{{ nb ~ ". " ~ question.libelle | e ~ asterisque }}</legend>		                
                     {% for value in question.choix %}		                                                                
                         <div class="custom-control custom-radio custom-control-inline">						
-                            <input type="radio" class="custom-control-input" id="{{ 'customControlValidation' ~ i}}" name="{{ id }}[]" {{ require }}>
+                            <input type="radio" class="custom-control-input" id="{{ 'customControlValidation' ~ i}}" name="{{ id }}[]" value="{{ value.LibelleChoix | e }}" {{ require }}>
                             <label class="custom-control-label" for="{{ 'customControlValidation' ~ i}}">{{ value.LibelleChoix | e }}</label>
                             {% if loop.last == true %}                                    
                                 <div class="invalid-feedback">Veuillez cocher une case.</div>
@@ -85,7 +85,7 @@
                     <legend>{{ nb ~ ". " ~ question.libelle | e ~ asterisque }}</legend>                    
                     {% for value in question.choix %}                                                    
                         <div class="custom-control custom-checkbox mb-3 custom-control-inline">
-                            <input type="checkbox" class="custom-control-input" id="{{'customControlValidation' ~ i}}"  name="{{ id }}[]">
+                            <input type="checkbox" class="custom-control-input" id="{{'customControlValidation' ~ i}}"  name="{{ id }}[]" value="{{ value.LibelleChoix | e }}">
                             <label class="custom-control-label" for="{{'customControlValidation' ~ i}}">{{ value.LibelleChoix | e }}</label>
                             {% if loop.last == true %}
                                 <div class="invalid-feedback">Veuillez cocher une case.</div>
@@ -120,8 +120,8 @@
                     <legend>{{ nb ~ ". " ~ question.libelle | e ~ asterisque }}</legend>                                            
                     {% for j in question.borneInf..question.borneSup %}                            										                        
                         <div class="custom-control custom-radio custom-control-inline">						
-                            <input type="radio" class="custom-control-input" id="{{ 'customControlValidation' ~ j }}" name="{{ id }}[]" value="{{ j ~ 'essai' }}" {{ require }}>
-                            <label class="custom-control-label" for="{{ 'customControlValidation' ~ j }}">{{ j }}</label>
+                            <input type="radio" class="custom-control-input" id="{{ 'customControlValidation' ~ id ~ j }}" name="{{ id }}[]" value="{{ j }}" {{ require }}>
+                            <label class="custom-control-label" for="{{ 'customControlValidation' ~ id ~ j }}">{{ j }}</label>
                             {% if loop.last == true %}                                    
                                 <div class="invalid-feedback">Veuillez cocher une case.</div>
                             {% endif %}
@@ -139,8 +139,9 @@
                         <input type="checkbox" class="custom-control-input" id="{{'customControlValidation' ~ id}}"  name="{{ id }}[]" {{ require }}>
                         <label class="custom-control-label" for="{{'customControlValidation' ~ id}}"></label>
                         <div class="invalid-feedback">Veuillez cocher une case.</div>
-                    </div>                    
-                </div>
+                    </div>
+                    {{ aide | raw }}
+                </div>                
             {% endif %}
 
             {% if question.typeQuestion != 8 %}
@@ -164,7 +165,7 @@
 
 	    </form>
  
-	    <p id="infoAsterisque">Les champs marqués d'un astérisque (*) sont obligatoires<p>
+	    <p id="infoAsterisque">Les champs marqués d'un astérisque (*) sont obligatoires.<p>
 
     </section>
 
@@ -177,8 +178,8 @@
         			<h4 class="modal-title">Confirmez-vous l'envoi de vos réponses ?</h4>        			
       			</div>
      			<div class="modal-body">        			       				
-                    <button id="btnAnnulation" type="button" class="btn btn-primary close" data-dismiss="modal">ANNULER</button>				
-                    <button class="btn btn-primary inscription" id="btnConfirmation">ENVOYER</button>       				
+                    <button id="btnAnnulation" type="button" class="btn btn-primary close" data-dismiss="modal">NON</button>				
+                    <button class="btn btn-primary inscription" id="btnConfirmation">OUI</button>       				
 	      		</div>
 	    	</div>
 	  	</div>
