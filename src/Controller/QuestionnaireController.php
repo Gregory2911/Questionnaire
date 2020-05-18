@@ -179,7 +179,7 @@ class QuestionnaireController extends AbstractController
             
             if($reponseJson['ok'] !== false)
             {
-                $reponseSubmit = "Le questionnaire a bien été envoyé.";
+                $reponseSubmit = "Votre questionnaire a bien été envoyé. Merci pour votre réponse.";
             }
             else
             {
