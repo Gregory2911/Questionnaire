@@ -89,7 +89,10 @@ class QuestionnaireController extends AbstractController
         }
         else
         {
-            throw new Exception('Identifiant inconnu.');
+            // throw new Exception('Identifiant inconnu.');
+            return $this->render('exception/error.html.twig',[
+                'error' => 'Identifiant inconnu.'
+            ]);
         }        
     }
 
