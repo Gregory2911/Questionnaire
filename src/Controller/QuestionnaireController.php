@@ -190,8 +190,7 @@ class QuestionnaireController extends AbstractController
             ]);
         }
         else
-        {
-            echo "bravo";
+        {            
             //throw new Exception('Identifiant inconnu.');
             return $this->render('exception/error.html.twig',[
                 'error' => 'Identifiant inconnu.'
