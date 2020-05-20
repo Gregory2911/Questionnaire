@@ -25,7 +25,6 @@ class QuestionnaireController extends AbstractController
         {            
             $Serveur_Formdev = '54.36.74.97';
             $json = @file_get_contents('http://'.$Serveur_Formdev.'/questionnaire/' . $id);
-                       
             if($json !== false)
             {
                 $content = json_decode($json, true); 
@@ -179,7 +178,7 @@ class QuestionnaireController extends AbstractController
             
             if($reponseJson['ok'] !== false)
             {
-                $reponseSubmit = "Le questionnaire a bien été envoyé.";
+                $reponseSubmit = "Votre questionnaire a bien été envoyé. Merci pour votre réponse.";
             }
             else
             {
