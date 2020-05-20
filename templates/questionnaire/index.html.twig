@@ -3,7 +3,7 @@
 {% block titleQuestionnaire %} {{ questionnaire.nom }} {% endblock %}
 
 {% block body %}
-    <section class="container">
+    <section class="container-lg">
         
         <p>{{ questionnaire.presentation | raw }}</p>
 
@@ -185,7 +185,16 @@
 	  	</div>
 	</div>
 
-    <footer>Vous recevez ce questionnaire car vous avez participé à une formation avec {{ questionnaire.societe }} qui utilise FORMDEV pour ses questionnaires.</footer>
+    {# <section class="container-fluid"> #}
+    <div class="card text-center footer">
+        <div class="card-footer text-muted">
+                <footer>Vous recevez ce questionnaire car vous avez participé à une formation avec {{ questionnaire.societe }} qui utilise FORMDEV pour ses questionnaires.</footer>
+        </div>
+    </div>
+        
+    
+    {# </section> #}
+    
 
 {% endblock %}
 
