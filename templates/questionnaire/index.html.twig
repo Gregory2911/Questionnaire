@@ -41,8 +41,8 @@
             {% if (question.typeQuestion == 1) %}
                 <div class="element form-group">								
                     <label for="{{ id }}">{{ nb ~ ". " ~ question.libelle | e ~ asterisque }}</label>									
-                    <input id="{{ id }}" name="{{ id }}[]" type="text" class="form-control" aria-describedby="passwordHelpBlock" {{ require }}>
                     {{ aide | raw }}
+                    <input id="{{ id }}" name="{{ id }}[]" type="text" class="form-control" aria-describedby="passwordHelpBlock" {{ require }}>                    
                     <div class="invalid-feedback">
                         Veuillez remplir ce champ.
                     </div>							        				
@@ -53,8 +53,8 @@
             {% if (question.typeQuestion == 2) %}
                 <div class="form-group element">
                     <label for="{{ id }}">{{ nb ~ ". " ~ question.libelle | e ~ asterisque }}</label>													
-                    <textarea id="{{ id }}" name="{{ id }}[]" type="textarea" class="form-control" {{ require }}></textarea>								
                     {{ aide | raw }}
+                    <textarea id="{{ id }}" name="{{ id }}[]" type="textarea" class="form-control" {{ require }}></textarea>								                    
                     <div class="invalid-feedback">
                         Veuillez remplir ce champ.
                     </div>
@@ -65,6 +65,7 @@
             {% if (question.typeQuestion == 3) %}
                 <div class="form-group element">                    
                     <legend>{{ nb ~ ". " ~ question.libelle | e ~ asterisque }}</legend>		                
+                    {{ aide | raw }}                  
                         <div class="row">                            
                             {% for value in question.choix %}		                                                                
                                 <div class="col-lg-2 col-md-4 col-sm-6 col-6">
@@ -78,8 +79,7 @@
                                 </div>
                                 {% set i = i+1 %}
                             {% endfor %}                                                                        
-                        </div>  
-                    {{ aide | raw }}                  
+                        </div>                      
                 </div>
             {% endif %}
 
@@ -87,6 +87,7 @@
             {% if (question.typeQuestion == 4) %}
                 <div class="form-group element {{ classChoixMultiple }}">
                     <legend>{{ nb ~ ". " ~ question.libelle | e ~ asterisque }}</legend> 
+                    {{ aide | raw }}
                     <div class="row">                                              
                         {% for value in question.choix %}      
                             <div class="col-lg-2 col-md-4 col-sm-6 col-6">                                              
@@ -100,8 +101,7 @@
                             </div>
                             {% set i = i+1 %}
                         {% endfor %}
-                    </div>
-                    {{ aide | raw }}
+                    </div>                    
                 </div>
             {% endif %}
 
@@ -109,6 +109,7 @@
             {% if (question.typeQuestion == 5) %}
                 <div class="element">
                     <legend>{{ nb ~ ". " ~ question.libelle | e ~ asterisque }}</legend>
+                    {{ aide | raw }}
                     <div class="form-group">					
                         <select class="custom-select" name="{{ id }}[]" {{ require }}>
                             <option value="">Ouvrez ce menu de sélection</option>                            									
@@ -117,8 +118,7 @@
                             {% endfor %}                            
                         </select>
                         <div class="invalid-feedback">Veuillez choisir un élément de la liste.</div>
-                    </div>
-                   {{ aide | raw }}
+                    </div>                   
                 </div>
             {% endif %}
 
@@ -126,6 +126,7 @@
             {% if (question.typeQuestion == 6) %}
                 <div class="form-group element">
                     <legend>{{ nb ~ ". " ~ question.libelle | e ~ asterisque }}</legend>                                            
+                    {{ aide | raw }}
                     {% for j in question.borneInf..question.borneSup %}                            										                        
                         <div class="custom-control custom-radio custom-control-inline">						
                             <input type="radio" class="custom-control-input" id="{{ 'customControlValidation' ~ id ~ j }}" name="{{ id }}[]" value="{{ j }}" {{ require }}>
@@ -134,8 +135,7 @@
                                 <div class="invalid-feedback">Veuillez cocher une case.</div>
                             {% endif %}
                         </div>                    
-                    {% endfor %}
-                    {{ aide | raw }}
+                    {% endfor %}                    
                 </div>
             {% endif %}
 
@@ -143,12 +143,12 @@
             {% if (question.typeQuestion == 7) %}            
                 <div class="form-group element">
                     <legend>{{ nb ~ ". " ~ question.libelle | e ~ asterisque }}</legend>
+                    {{ aide | raw }}
                     <div class="custom-control custom-checkbox mb-3">
                         <input type="checkbox" class="custom-control-input" id="{{'customControlValidation' ~ id}}"  name="{{ id }}[]" {{ require }}>
                         <label class="custom-control-label" for="{{'customControlValidation' ~ id}}"></label>
                         <div class="invalid-feedback">Veuillez cocher une case.</div>
-                    </div>
-                    {{ aide | raw }}
+                    </div>                    
                 </div>                
             {% endif %}
 
@@ -161,7 +161,7 @@
             {# si questionnaire anonyme #}
             {% if (questionnaire.anonyme == true) %}
                 <div class="form-group element">
-                    <legend>Cochez cette case si vous souhaitez que vos réponses soient traitées de manière anonyme</legend>
+                    <legend>Cochez cette case si vous souhaitez que vos réponses soient traitées de manière anonyme.</legend>
                     <div class="custom-control custom-checkbox mb-3">
                         <input type="checkbox" class="custom-control-input" id="anonyme"  name="anonyme">
                         <label class="custom-control-label" for="anonyme"></label>                        
