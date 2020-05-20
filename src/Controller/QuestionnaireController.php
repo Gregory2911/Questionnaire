@@ -78,18 +78,23 @@ class QuestionnaireController extends AbstractController
                 }
                 else
                 {
-                    throw new Exception('Le questionnaire a déjà été envoyé.');
+                    // throw new Exception('Le questionnaire a déjà été envoyé.');
+                    return $this->render('exception/error.html.twig',[
+                        'error' => 'Le questionnaire a déjà été envoyé.'
+                    ]);
                 }
 
             }
             else
             {
-                throw new Exception('Récupération du questionnaire impossible.');
+                // throw new Exception('Récupération du questionnaire impossible.');
+                return $this->render('exception/error.html.twig',[
+                    'error' => 'Récupération du questionnaire impossible.'
+                ]);
             }
         }
         else
-        {
-            // throw new Exception('Identifiant inconnu.');
+        {            
             return $this->render('exception/error.html.twig',[
                 'error' => 'Identifiant inconnu.'
             ]);
@@ -121,7 +126,10 @@ class QuestionnaireController extends AbstractController
                     {
                         if($elt[2] == "vrai" && $value[0] == "")
                         {        
-                            throw new Exception('Vous devez répondre à toutes les questions obligatoires.');                    
+                            // throw new Exception('Vous devez répondre à toutes les questions obligatoires.');                    
+                            return $this->render('exception/error.html.twig',[
+                                'error' => 'Vous devez répondre à toutes les questions obligatoires.'
+                            ]);
                         }
                         elseif($value[0] !== "")
                         {                    
