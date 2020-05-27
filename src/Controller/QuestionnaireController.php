@@ -22,8 +22,8 @@ class QuestionnaireController extends AbstractController
     public function index($id = null)
     {
         if(isset($id))
-        {            
-            $Serveur_Formdev = '54.36.74.97';
+        {                        
+            $Serveur_Formdev = $_SERVER['APP_SERV'];
             $json = @file_get_contents('http://'.$Serveur_Formdev.'/questionnaire/' . $id);
             if($json !== false)
             {
@@ -108,6 +108,7 @@ class QuestionnaireController extends AbstractController
     {
         if($id !== null)
         {
+            
             $idQuestionnaire = $id;
 
             $request = Request::createFromGlobals();

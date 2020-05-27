@@ -90,7 +90,8 @@
                     {{ aide | raw }}
                     <div class="row">                                              
                         {% for value in question.choix %}      
-                            <div class="col-lg-2 col-md-4 col-sm-6 col-6">                                              
+                            <div class="col-lg-2 col-md-4 col-sm-6 col-6">
+                            {# <div class="d-flex align-items-center"> #}
                                 <div class="custom-control custom-checkbox mb-3 custom-control-inline">
                                     <input type="checkbox" class="custom-control-input" id="{{'customControlValidation' ~ i}}"  name="{{ id }}[]" value="{{ value.LibelleChoix | e }}">
                                     <label class="custom-control-label" for="{{'customControlValidation' ~ i}}">{{ value.LibelleChoix | e }}</label>
@@ -98,6 +99,7 @@
                                         <div class="invalid-feedback">Veuillez cocher une case.</div>
                                     {% endif %}
                                 </div>                    
+                            {# </div> #}
                             </div>
                             {% set i = i+1 %}
                         {% endfor %}
