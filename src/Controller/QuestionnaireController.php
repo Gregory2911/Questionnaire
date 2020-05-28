@@ -23,8 +23,9 @@ class QuestionnaireController extends AbstractController
     {
         if(isset($id))
         {                        
-            $Serveur_Formdev = $_SERVER['APP_SERV'];
+            $Serveur_Formdev = "localhost";
             $json = @file_get_contents('http://'.$Serveur_Formdev.'/questionnaire/' . $id);
+            
             if($json !== false)
             {
                 $content = json_decode($json, true); 
