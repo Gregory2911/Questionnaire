@@ -107,6 +107,7 @@ class QuestionnaireController extends AbstractController
      */
     public function submitQuestionnaire($id = null, Request $request)
     {
+        $Serveur_Formdev = $_SERVER['APP_SERV'];
         if($id !== null)
         {
             
@@ -182,7 +183,7 @@ class QuestionnaireController extends AbstractController
             
             $context = stream_context_create($options);
             
-            $result = file_get_contents('http://54.36.74.97/questionnaire/' . $id, false, $context);
+            $result = file_get_contents('http://'.$Serveur_Formdev .'/questionnaire/'. $id, false, $context);
             
             $reponseJson = json_decode($result, true);
 
