@@ -14,13 +14,19 @@
 
         {% for question in questionnaire.field %}            
 
+            {% if (question.typeQuestion == 1) or (question.typeQuestion == 2) %}
+                {% set lenghtReponse = "long" %}
+            {% else %}
+                {% set lenghtReponse = "court" %}
+            {% endif %}
+
             {% if (question.obligatoire == true) %}
-                {% set id = 'id|' ~ question.id ~ '|vrai' %}
+                {% set id = 'id|' ~ question.id ~ '|vrai|' ~ lenghtReponse %}
                 {% set require = "required" %}
                 {% set asterisque = "*" %}
                 {% set classChoixMultiple = "choixMultiple" %}
             {% else %}
-                {% set id = 'id|' ~ question.id ~ '|faux' %}
+                {% set id = 'id|' ~ question.id ~ '|faux|' ~ lenghtReponse %}
                 {% set require = "" %}
                 {% set asterisque = "" %}
                 {% set classChoixMultiple = "" %}
@@ -163,10 +169,10 @@
             {# si questionnaire anonyme #}
             {% if (questionnaire.anonyme == true) %}
                 <div class="form-group element">
-                    <legend>Cochez cette case si vous souhaitez que vos réponses soient traitées de manière anonyme.</legend>
+                    {# <legend>Cochez cette case si vous souhaitez que vos réponses soient traitées de manière anonyme.</legend> #}
                     <div class="custom-control custom-checkbox mb-3">
                         <input type="checkbox" class="custom-control-input" id="anonyme"  name="anonyme">
-                        <label class="custom-control-label" for="anonyme"></label>                        
+                        <label class="custom-control-label" for="anonyme">Cochez cette case si vous souhaitez que vos réponses soient traitées de manière anonyme.</label>                        
                     </div>                    
                 </div>
             {% endif %} 

@@ -65,6 +65,18 @@ document.addEventListener("DOMContentLoaded", function () {
     });    
   });
 
+  // var checkbox = document.querySelectorAll('input.custom-control-input');
+  // for (var i = 0; i <= checkbox.length; i++){
+  //   checkbox[i].addEventListener("click", function(ev){
+  //     //alert('cool');
+  //     $(this).addClass("done");
+  //   })
+  // };
+  // $('.custom-control-input').click(function(ev){
+  //   // alert('cool');
+  //   $(this).addClass("done");
+  // })
+
   $("#btnConfirmation").click(function(){
     formulaire.submit();
     $('#modalConfirmation').modal('hide');      

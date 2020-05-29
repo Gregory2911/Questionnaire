@@ -13,6 +13,7 @@ use App\Entity\Field;
 use App\Entity\Questionnaire;
 use App\Entity\Reponses;
 use App\Entity\Reponse;
+use App\Entity\ReponseLongue;
 
 class QuestionnaireController extends AbstractController
 {
@@ -138,9 +139,19 @@ class QuestionnaireController extends AbstractController
                             $tabReponse = array();
                             foreach ($value as $keyQuestion => $valueQuestion) 
                             {
-                                $reponse = new Reponse();
-                                $reponse->setReponse($valueQuestion);
-                                $tabReponse[$j] = $reponse;
+                                if($elt[3] == "long")
+                                {
+                                    $reponse = new ReponseLongue();                                
+                                    $reponse->setReponseLongue($valueQuestion);
+                                    $tabReponse[$j] = $reponse;
+                                }
+                                else
+                                {
+                                    $reponse = new Reponse();
+                                    $reponse->setReponse($valueQuestion);
+                                    $tabReponse[$j] = $reponse;
+                                }                                
+                               
                                 $j++;
                             }
                             
@@ -166,7 +177,7 @@ class QuestionnaireController extends AbstractController
             $serializer = new Serializer($normalizers, $encoders);
                         
             $json = '{"isAnonyme":' . $isAnonyme . ',"Reponse":' . $serializer->serialize($tabReponses, 'json') . '}';                                   
-                        
+            // dump($tabReponses);     
             // dump($json);
             // die();
 
