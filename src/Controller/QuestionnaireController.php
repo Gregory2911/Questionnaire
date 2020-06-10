@@ -89,7 +89,8 @@ class QuestionnaireController extends AbstractController
                 if($questionnaire->getRealise() == false)
                 {
                     return $this->render('questionnaire/index.html.twig', [                        
-                        'questionnaire' => $questionnaire
+                        'questionnaire' => $questionnaire,
+                        'servicename'   => $_SERVER['APP_NAME']
                     ]);
                 }
                 else
