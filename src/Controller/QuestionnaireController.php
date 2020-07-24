@@ -18,24 +18,24 @@ use App\Entity\ReponseLongue;
 class QuestionnaireController extends AbstractController
 {
     /**
-     * @Route("/{id}/{test}", name="questionnaire")
+     * @Route("/{id}", name="questionnaire")
      */
-    public function index($id = null, $test = null)
+    public function index($id = null)
     {
         
         if(isset($id))
         {                        
-            if (isset($test) && $test == '1')
-            {
-                $Serveur_Formdev = 'webdevtest.form-dev.fr';
-                $serveurTest = 1;
-            }
-            else
-            {
-                $Serveur_Formdev = $_SERVER['APP_SERV'];
-                $serveurTest = 0;
-            }
-            
+            // if (isset($test) && $test == '1')
+            // {
+            //     $Serveur_Formdev = 'webdevtest.form-dev.fr';
+            //     $serveurTest = 1;
+            // }
+            // else
+            // {
+            //     $Serveur_Formdev = $_SERVER['APP_SERV'];
+            //     $serveurTest = 0;
+            // }
+            $Serveur_Formdev = $_SERVER['APP_SERV'];
             
             // dump($Serveur_Formdev);
             // die();
@@ -119,21 +119,23 @@ class QuestionnaireController extends AbstractController
     }
 
     /**
-     * @Route("/submitQuestionnaire/{id}/{test}", name="submitQuestionnaire")
+     * @Route("/submitQuestionnaire/{id}", name="submitQuestionnaire")
      */
-    public function submitQuestionnaire($id = null, $test = null, Request $request)
+    public function submitQuestionnaire($id = null, Request $request)
     {
-        if (isset($test) && $test == '1')
-        {
-            $Serveur_Formdev = 'webdevtest.form-dev.fr';
-            $serveurTest = 1;
-        }
-        else
-        {
-            $Serveur_Formdev = $_SERVER['APP_SERV'];
-            $serveurTest = 0;
-        }
+        // if (isset($test) && $test == '1')
+        // {
+        //     $Serveur_Formdev = 'webdevtest.form-dev.fr';
+        //     $serveurTest = 1;
+        // }
+        // else
+        // {
+        //     $Serveur_Formdev = $_SERVER['APP_SERV'];
+        //     $serveurTest = 0;
+        // }
         
+        $Serveur_Formdev = $_SERVER['APP_SERV'];
+
         if($id !== null)
         {
             
