@@ -72,10 +72,10 @@ document.addEventListener("DOMContentLoaded", function () {
   //     $(this).addClass("done");
   //   })
   // };
-  // $('.custom-control-input').click(function(ev){
-  //   // alert('cool');
-  //   $(this).addClass("done");
-  // })
+  $(":checkbox").click(function(){
+    // alert('cool');
+    $(this).addClass("done");
+  })
 
   $("#btnConfirmation").click(function(){
     formulaire.submit();
